@@ -141,7 +141,7 @@ namespace PlutoRover.Test
         {
             RoverPositionModule m = new RoverPositionModule(2, 2, Direction.North);
 
-            m.MoveCommand("FFRFLFFLFRFFLF");
+            m.MoveCommand("FFRFLFFLFRFFRF");
 
             Assert.AreEqual(3, m.xPos);
             Assert.AreEqual(8, m.yPos);

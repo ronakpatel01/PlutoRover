@@ -54,7 +54,8 @@ namespace PlutoRover
         private void Rotate(int numberOfClockwiseRightAngles)
         {
             int directionInt = (int)direction;
-            directionInt += numberOfClockwiseRightAngles % 4;
+            directionInt = (directionInt + 4 + numberOfClockwiseRightAngles) % 4;
+            direction = (Direction)directionInt;
         }
     }
 }
