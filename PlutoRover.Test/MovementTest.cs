@@ -250,6 +250,7 @@ namespace PlutoRover.Test
             Assert.AreEqual(Direction.West, m.direction);
         }
 
+        [TestMethod]
         public void WrappingRoundRoute()
         {
             RoverPositionModule m = new RoverPositionModule(95, 95, Direction.North);
@@ -260,8 +261,10 @@ namespace PlutoRover.Test
             Assert.AreEqual(95, m.yPos);
             Assert.AreEqual(Direction.North, m.direction);
         }
-
-
         #endregion Wrapping
+
+        #region Obstacle Detection
+
+        #endregion Obstacle Detection
     }
 }
