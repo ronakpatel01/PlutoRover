@@ -8,5 +8,7 @@ namespace PlutoRover
     {
         public static int xMax { get; } = 100;
         public static int yMax { get; } = 100;
+
+        public static int[,] obstacles = { { 10, 10 }, { 11, 11 }, { 13, 13 }, { 14, 14 }, { 15, 15 } };
     }
 }

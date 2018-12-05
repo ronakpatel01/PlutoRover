@@ -154,7 +154,7 @@ namespace PlutoRover.Test
 
         #region Wrapping        
         [TestMethod]
-        public void WrapNorthForward()
+        public void TestWrapNorthForward()
         {
             RoverPositionModule m = new RoverPositionModule(95, 95, Direction.North);
 
@@ -166,7 +166,7 @@ namespace PlutoRover.Test
         }
 
         [TestMethod]
-        public void WrapNorthBackward()
+        public void TestWrapNorthBackward()
         {
             RoverPositionModule m = new RoverPositionModule(5, 5, Direction.North);
 
@@ -178,7 +178,7 @@ namespace PlutoRover.Test
         }
 
         [TestMethod]
-        public void WrapEastForward()
+        public void TestWrapEastForward()
         {
             RoverPositionModule m = new RoverPositionModule(95, 95, Direction.East);
 
@@ -190,7 +190,7 @@ namespace PlutoRover.Test
         }
 
         [TestMethod]
-        public void WrapEastBackward()
+        public void TestWrapEastBackward()
         {
             RoverPositionModule m = new RoverPositionModule(5, 5, Direction.East);
 
@@ -202,7 +202,7 @@ namespace PlutoRover.Test
         }
 
         [TestMethod]
-        public void WrapSouthForward()
+        public void TestWrapSouthForward()
         {
             RoverPositionModule m = new RoverPositionModule(5, 5, Direction.South);
 
@@ -214,7 +214,7 @@ namespace PlutoRover.Test
         }
 
         [TestMethod]
-        public void WrapSouthBackward()
+        public void TestWrapSouthBackward()
         {
             RoverPositionModule m = new RoverPositionModule(95, 95, Direction.South);
 
@@ -226,7 +226,7 @@ namespace PlutoRover.Test
         }
 
         [TestMethod]
-        public void WrapWestForward()
+        public void TestWrapWestForward()
         {
             RoverPositionModule m = new RoverPositionModule(5, 5, Direction.West);
 
@@ -239,7 +239,7 @@ namespace PlutoRover.Test
         }
 
         [TestMethod]
-        public void WrapWestBackward()
+        public void TestWrapWestBackward()
         {
             RoverPositionModule m = new RoverPositionModule(95, 95, Direction.West);
 
@@ -251,7 +251,7 @@ namespace PlutoRover.Test
         }
 
         [TestMethod]
-        public void WrappingRoundRoute()
+        public void TestWrappingRoundRoute()
         {
             RoverPositionModule m = new RoverPositionModule(95, 95, Direction.North);
 
@@ -264,7 +264,109 @@ namespace PlutoRover.Test
         #endregion Wrapping
 
         #region Obstacle Detection
+        [TestMethod]
+        public void TestHitNorth()
+        {
+            RoverPositionModule m = new RoverPositionModule(13, 10, Direction.North);
 
+            m.MoveCommand("FFFFFFFFFF");
+
+            Assert.AreEqual(13, m.xPos);
+            Assert.AreEqual(12, m.yPos);
+            Assert.AreEqual(Direction.North, m.direction);
+            Assert.AreEqual(true, m.HitObstacle);
+        }
+
+        [TestMethod]
+        public void TestHitNorthBackWard()
+        {
+            RoverPositionModule m = new RoverPositionModule(13, 10, Direction.South);
+
+            m.MoveCommand("BBBBBBBBBB");
+
+            Assert.AreEqual(13, m.xPos);
+            Assert.AreEqual(12, m.yPos);
+            Assert.AreEqual(Direction.South, m.direction);
+            Assert.AreEqual(true, m.HitObstacle);
+        }
+
+        [TestMethod]
+        public void TestHitEast()
+        {
+            RoverPositionModule m = new RoverPositionModule(10, 13, Direction.East);
+
+            m.MoveCommand("FFFFFFFFFF");
+
+            Assert.AreEqual(13, m.xPos);
+            Assert.AreEqual(12, m.yPos);
+            Assert.AreEqual(Direction.East, m.direction);
+            Assert.AreEqual(true, m.HitObstacle);
+        }
+
+        [TestMethod]
+        public void TestHitEastBackWard()
+        {
+            RoverPositionModule m = new RoverPositionModule(10, 13, Direction.West);
+
+            m.MoveCommand("BBBBBBBBBB");
+
+            Assert.AreEqual(13, m.xPos);
+            Assert.AreEqual(12, m.yPos);
+            Assert.AreEqual(Direction.West, m.direction);
+            Assert.AreEqual(true, m.HitObstacle);
+        }
+
+        [TestMethod]
+        public void TestHitSouth()
+        {
+            RoverPositionModule m = new RoverPositionModule(13, 15, Direction.South);
+
+            m.MoveCommand("FFFFFFFFFF");
+
+            Assert.AreEqual(15, m.xPos);
+            Assert.AreEqual(14, m.yPos);
+            Assert.AreEqual(Direction.South, m.direction);
+            Assert.AreEqual(true, m.HitObstacle);
+        }
+
+        [TestMethod]
+        public void TestHitSouthBackwards()
+        {
+            RoverPositionModule m = new RoverPositionModule(13, 15, Direction.North);
+
+            m.MoveCommand("BBBBBBBBBB");
+
+            Assert.AreEqual(15, m.xPos);
+            Assert.AreEqual(14, m.yPos);
+            Assert.AreEqual(Direction.North, m.direction);
+            Assert.AreEqual(true, m.HitObstacle);
+        }
+
+        [TestMethod]
+        public void TestHitWest()
+        {
+            RoverPositionModule m = new RoverPositionModule(15, 13, Direction.West);
+
+            m.MoveCommand("FFFFFFFFFF");
+
+            Assert.AreEqual(14, m.xPos);
+            Assert.AreEqual(13, m.yPos);
+            Assert.AreEqual(Direction.West, m.direction);
+            Assert.AreEqual(true, m.HitObstacle);
+        }
+
+        [TestMethod]
+        public void TestHitWestBackward()
+        {
+            RoverPositionModule m = new RoverPositionModule(15, 13, Direction.East);
+
+            m.MoveCommand("BBBBBBBBBB");
+
+            Assert.AreEqual(14, m.xPos);
+            Assert.AreEqual(13, m.yPos);
+            Assert.AreEqual(Direction.East, m.direction);
+            Assert.AreEqual(true, m.HitObstacle);
+        }
         #endregion Obstacle Detection
     }
 }
