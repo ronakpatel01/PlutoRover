@@ -29,7 +29,7 @@ namespace PlutoRover.Test
         }
 
         [TestMethod]
-        public void TestBackwardsMovementVertical()
+        public void TestBackwardsMovementVertical()  
         {
             RoverPositionModule m = new RoverPositionModule(0, 5, Direction.North);
 
