@@ -88,5 +88,64 @@ namespace PlutoRover.Test
             Assert.AreEqual(Direction.East, m.direction);
         }
 
+        [TestMethod]
+        public void TestRotateClockwise()
+        {
+            RoverPositionModule m = new RoverPositionModule(5, 5, Direction.North);
+
+            m.MoveCommand("R");
+
+            Assert.AreEqual(5, m.xPos);
+            Assert.AreEqual(5, m.yPos);
+            Assert.AreEqual(Direction.East, m.direction);
+        }
+
+        [TestMethod]
+        public void TestRotateAntiClockwise()
+        {
+            RoverPositionModule m = new RoverPositionModule(5, 5, Direction.North);
+
+            m.MoveCommand("L");
+
+            Assert.AreEqual(5, m.xPos);
+            Assert.AreEqual(5, m.yPos);
+            Assert.AreEqual(Direction.West, m.direction);
+        }
+
+        [TestMethod]
+        public void TestRoundTripClockwise()
+        {
+            RoverPositionModule m = new RoverPositionModule(5, 5, Direction.North);
+
+            m.MoveCommand("FFRFFRFFRFFR");
+
+            Assert.AreEqual(5, m.xPos);
+            Assert.AreEqual(5, m.yPos);
+            Assert.AreEqual(Direction.North, m.direction);
+        }
+
+        [TestMethod]
+        public void TestRoundTripAntiClockwise()
+        {
+            RoverPositionModule m = new RoverPositionModule(5, 5, Direction.North);
+
+            m.MoveCommand("FFLFFLFFLFFL");
+
+            Assert.AreEqual(5, m.xPos);
+            Assert.AreEqual(5, m.yPos);
+            Assert.AreEqual(Direction.North, m.direction);
+        }
+
+        [TestMethod]
+        public void TestSnakeMovement()
+        {
+            RoverPositionModule m = new RoverPositionModule(2, 2, Direction.North);
+
+            m.MoveCommand("FFRFLFFLFRFFLF");
+
+            Assert.AreEqual(3, m.xPos);
+            Assert.AreEqual(8, m.yPos);
+            Assert.AreEqual(Direction.East, m.direction);
+        }
     }
 }
