@@ -59,8 +59,8 @@ namespace PlutoRover.Test
 
             m.MoveCommand("F");
 
-            Assert.AreEqual(0, m.xPos);
-            Assert.AreEqual(6, m.yPos);
+            Assert.AreEqual(6, m.xPos);
+            Assert.AreEqual(0, m.yPos);
             Assert.AreEqual(Direction.East, m.direction);
         }
 
@@ -71,7 +71,7 @@ namespace PlutoRover.Test
 
             m.MoveCommand("B");
 
-            Assert.AreEqual(6, m.xPos);
+            Assert.AreEqual(4, m.xPos);
             Assert.AreEqual(0, m.yPos);
             Assert.AreEqual(Direction.East, m.direction);
         }
@@ -79,12 +79,12 @@ namespace PlutoRover.Test
         [TestMethod]
         public void TestForwardBackwardsMovementHorizontal()
         {
-            RoverPositionModule m = new RoverPositionModule(0, 5, Direction.East);
+            RoverPositionModule m = new RoverPositionModule(5, 0, Direction.East);
 
             m.MoveCommand("FFBFFB");
 
-            Assert.AreEqual(0, m.xPos);
-            Assert.AreEqual(7, m.yPos);
+            Assert.AreEqual(7, m.xPos);
+            Assert.AreEqual(0, m.yPos);
             Assert.AreEqual(Direction.East, m.direction);
         }
 
