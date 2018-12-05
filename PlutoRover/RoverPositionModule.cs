@@ -4,7 +4,7 @@ namespace PlutoRover
 {
     public class RoverPositionModule
     {
-        public int xPos { get; private set; }
+        public int xPos { get; private set; } 
         public int yPos { get; private set; }
         public Direction direction { get; private set; }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PlutoRover
 {
-    public enum Direction
+    public enum Direction 
     {
         North = 1,
         East = 2,
