@@ -44,11 +44,13 @@ namespace PlutoRover
             if (direction == Direction.South || direction == Direction.West)
                 numberOfPlaces = -numberOfPlaces;
 
+            int xLimit = WorldConstants.xMax + 1; 
             if (direction == Direction.North || direction == Direction.South)
-                yPos += numberOfPlaces;
+                yPos = (yPos + numberOfPlaces + xLimit) % xLimit;
 
+            int yLimit = WorldConstants.yMax + 1;
             if (direction == Direction.East || direction == Direction.West)
-                xPos += numberOfPlaces;
+                xPos = (xPos + numberOfPlaces + yLimit) % yLimit;
         }
 
         private void Rotate(int numberOfClockwiseRightAngles)

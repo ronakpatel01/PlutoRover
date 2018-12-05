@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PlutoRover.Model
+namespace PlutoRover
 {
     public class WorldConstants
     {
-        public int xMax { get; } = 100;
-        public int yMax { get; } = 100;
+        public static int xMax { get; } = 100;
+        public static int yMax { get; } = 100;
     }
 }

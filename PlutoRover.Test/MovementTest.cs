@@ -228,12 +228,12 @@ namespace PlutoRover.Test
         [TestMethod]
         public void WrapWestForward()
         {
-            RoverPositionModule m = new RoverPositionModule(95, 95, Direction.West);
+            RoverPositionModule m = new RoverPositionModule(5, 5, Direction.West);
 
             m.MoveCommand("FFFFFFFFFF");
 
-            Assert.AreEqual(4, m.xPos);
-            Assert.AreEqual(95, m.yPos);
+            Assert.AreEqual(96, m.xPos);
+            Assert.AreEqual(5, m.yPos);
             Assert.AreEqual(Direction.West, m.direction);
 
         }
@@ -241,12 +241,12 @@ namespace PlutoRover.Test
         [TestMethod]
         public void WrapWestBackward()
         {
-            RoverPositionModule m = new RoverPositionModule(5, 5, Direction.West);
+            RoverPositionModule m = new RoverPositionModule(95, 95, Direction.West);
 
             m.MoveCommand("BBBBBBBBBB");
 
-            Assert.AreEqual(96, m.xPos);
-            Assert.AreEqual(5, m.yPos);
+            Assert.AreEqual(4, m.xPos);
+            Assert.AreEqual(95, m.yPos);
             Assert.AreEqual(Direction.West, m.direction);
         }
 
