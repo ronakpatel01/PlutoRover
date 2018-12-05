@@ -27,6 +27,12 @@ namespace PlutoRover
                     case 'B':
                         Move(-1);
                         break;
+                    case 'R':
+                        Rotate(1);
+                        break;
+                    case 'L':
+                        Rotate(-1);
+                        break;
                     default:
                         throw new Exception($"Unknown command {command}");
                 }
@@ -43,6 +49,12 @@ namespace PlutoRover
 
             if (direction == Direction.East || direction == Direction.West)
                 xPos += numberOfPlaces;
+        }
+
+        private void Rotate(int numberOfClockwiseRightAngles)
+        {
+            int directionInt = (int)direction;
+            directionInt += numberOfClockwiseRightAngles % 4;
         }
     }
 }
