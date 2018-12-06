@@ -4,7 +4,7 @@ namespace PlutoRover
 {
     public class RoverPositionModule
     {
-        public int xPos { get; private set; } 
+        public int xPos { get; private set; }
         public int yPos { get; private set; }
         public Direction direction { get; private set; }
         public bool HitObstacle { get; private set; }
@@ -23,10 +23,10 @@ namespace PlutoRover
                 switch (command)
                 {
                     case 'F':
-                        Move(1);
+                        HitObstacle = !Move(1);
                         break;
                     case 'B':
-                        Move(-1);
+                        HitObstacle = !Move(-1);
                         break;
                     case 'R':
                         Rotate(1);
@@ -37,21 +37,34 @@ namespace PlutoRover
                     default:
                         throw new Exception($"Unknown command {command}");
                 }
+
+                if (HitObstacle)
+                    break;
+
             }
         }
 
-        private void Move(int numberOfPlaces)
+        // Returns if can move. True if can, false if there is an obsticle in the way
+        private bool Move(int numberOfPlaces)
         {
+            int proposedX = xPos, proposedY = yPos;
             if (direction == Direction.South || direction == Direction.West)
                 numberOfPlaces = -numberOfPlaces;
 
-            int xLimit = WorldConstants.xMax + 1; 
+            int xLimit = WorldConstants.xMax + 1;
             if (direction == Direction.North || direction == Direction.South)
-                yPos = (yPos + numberOfPlaces + xLimit) % xLimit;
+                proposedY = (yPos + numberOfPlaces + xLimit) % xLimit;
 
             int yLimit = WorldConstants.yMax + 1;
             if (direction == Direction.East || direction == Direction.West)
-                xPos = (xPos + numberOfPlaces + yLimit) % yLimit;
+                proposedX = (xPos + numberOfPlaces + yLimit) % yLimit;
+
+            if (ObstacleDetectionModule.IsObstacle(proposedX, proposedY))
+                return false;
+
+            xPos = proposedX;
+            yPos = proposedY;
+            return true;
         }
 
         private void Rotate(int numberOfClockwiseRightAngles)

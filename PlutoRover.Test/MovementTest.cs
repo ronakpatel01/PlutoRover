@@ -297,8 +297,8 @@ namespace PlutoRover.Test
 
             m.MoveCommand("FFFFFFFFFF");
 
-            Assert.AreEqual(13, m.xPos);
-            Assert.AreEqual(12, m.yPos);
+            Assert.AreEqual(12, m.xPos);
+            Assert.AreEqual(13, m.yPos);
             Assert.AreEqual(Direction.East, m.direction);
             Assert.AreEqual(true, m.HitObstacle);
         }
@@ -310,8 +310,8 @@ namespace PlutoRover.Test
 
             m.MoveCommand("BBBBBBBBBB");
 
-            Assert.AreEqual(13, m.xPos);
-            Assert.AreEqual(12, m.yPos);
+            Assert.AreEqual(12, m.xPos);
+            Assert.AreEqual(13, m.yPos);
             Assert.AreEqual(Direction.West, m.direction);
             Assert.AreEqual(true, m.HitObstacle);
         }
@@ -323,7 +323,7 @@ namespace PlutoRover.Test
 
             m.MoveCommand("FFFFFFFFFF");
 
-            Assert.AreEqual(15, m.xPos);
+            Assert.AreEqual(13, m.xPos);
             Assert.AreEqual(14, m.yPos);
             Assert.AreEqual(Direction.South, m.direction);
             Assert.AreEqual(true, m.HitObstacle);
@@ -336,7 +336,7 @@ namespace PlutoRover.Test
 
             m.MoveCommand("BBBBBBBBBB");
 
-            Assert.AreEqual(15, m.xPos);
+            Assert.AreEqual(13, m.xPos);
             Assert.AreEqual(14, m.yPos);
             Assert.AreEqual(Direction.North, m.direction);
             Assert.AreEqual(true, m.HitObstacle);
